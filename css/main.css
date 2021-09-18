@@ -26,3 +26,7 @@ li a:hover {
 .container-class {
     text-align: center;
 }
+
+#front-pt {
+    width: 50%;
+}
