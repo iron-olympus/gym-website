@@ -1,34 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Iron Olympus</title>
+    <meta charset="UTF-8"/>
+    <title>Location</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="css/main.css">
-
 </head>
 <body>
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--    <div class="collapse navbar-collapse" id="navbarSupportedContent" >-->
-<!--        <ul class="navbar-nav mr-auto" style="width: 100%">-->
-<!--            <li class="nav-item"><a href="#">Iron Olympus</a></li>-->
-<!--            <li class="nav-item" style="margin-left: auto"><a href="#">Home</a></li>-->
-<!--            <li class="nav-item"><a href="#">About Us</a></li>-->
-<!--            <li class="nav-item"><a href="#">Contact</a></li>-->
-<!--            <li class="nav-item dropdown">-->
-<!--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white; margin-top: 6px">-->
-<!--                    Services-->
-<!--                </a>-->
-<!--                <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--                    <a class="dropdown-item" href="#">Personal Training</a>-->
-<!--                    <a class="dropdown-item" href="#">Daily Workouts</a>-->
-<!--                    <a class="dropdown-item" href="#">Competitions</a>-->
-<!--                </div>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--</nav>-->
 <nav class="navbar navbar-expand-lg p-3" style="color: white;">
     <a class="navbar-brand" href="#">Iron Olympus</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -39,7 +19,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="location.html">Location <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Memberships</a>
@@ -59,21 +39,14 @@
         </ul>
     </div>
 </nav>
-<div class="container-class">
-    <div>
-        <h1>WELCOME TO IRON OLYMPUS GYM</h1>
-        <!--    <img id="front-pt" src="img/fitgirl3.jpg" alt="personal trainer">-->
-    </div>
+<h1 class="text-center">Where we are located</h1>
+<div id='map' style='width: 100%; height: 600px; margin: 0 auto'></div>
 
+<!--<button id="zoom">Zoom in</button>-->
 
-</div>
-
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-        <h4 class="text-center">This is the footer</h4>
-    </div>
-</footer>
-
+<script src="js/keys.js"></script>
+<script src="js/jquery-3.6.0.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -85,7 +58,27 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-<script src="js/landing.js"></script>
+<script>
+    mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+    var map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [-93.6250, 41.5868], // starting position [lng, lat]
+        zoom: 12 // starting zoom
+    });
 
+
+    $('#zoom').click(function () {
+        var zoomVal = map.getZoom()
+        map.setZoom(zoomVal + 1);
+    })
+
+    var marker = new mapboxgl.Marker({
+        color: 'red'
+    })
+        .setLngLat ([-93.6250, 41.5868])
+        .addTo(map);
+
+</script>
 </body>
 </html>
