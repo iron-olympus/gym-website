@@ -78,3 +78,21 @@ main > .container {
 .icon:hover {
     transform: scale(2);
 }
+
+/*about us page styling*/
+.creators {
+    text-align: center;
+
+}
+
+/*Benny and David img*/
+.bdc {
+    /*width: 40%;*/
+    border: solid 1px #555;
+    background-color: #eed;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    transition: transform .3s; /* Animation */
+}
