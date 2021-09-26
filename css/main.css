@@ -79,6 +79,10 @@ main > .container {
     transform: scale(2);
 }
 
+footer {
+    /*color: hotpink !important;*/
+}
+
 /*about us page styling*/
 .creators {
     text-align: center;
